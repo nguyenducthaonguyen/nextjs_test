@@ -1,0 +1,118 @@
+# Boilerplate and Starter for Next.js 15+, Tailwind CSS 4, and TypeScript.
+
+### Features
+
+Developer experience first, extremely flexible code structure and only keep what you need:
+
+- ⚡ [Next.js](https://nextjs.org) with App Router support
+- 🔥 Type checking [TypeScript](https://www.typescriptlang.org)
+- 💎 Integrate with [Tailwind CSS](https://tailwindcss.com)
+- ✅ Strict Mode for TypeScript and React 19
+- 🌐 Multi-language (i18n) with [next-intl](https://next-intl-docs.vercel.app/)
+- ♻️ Type-safe environment variables with T3 Env
+- ⌨️ Form handling with React Hook Form
+- 🔴 Validation library with Zod
+- 📏 Linter with [ESLint](https://eslint.org) (default Next.js, Next.js Core Web Vitals, Tailwind CSS and Antfu configuration)
+- 💖 Code Formatter with [Prettier](https://prettier.io)
+- 🦊 Husky for Git Hooks
+- 🚫 Lint-staged for running linters on Git staged files
+- 🦺 Unit Testing with Vitest and React Testing Library
+- 🧪 Integration and E2E Testing with Playwright
+- 🚨 Error Monitoring with [Sentry](https://sentry.io/for/nextjs/?utm_source=github&utm_medium=paid-community&utm_campaign=general-fy25q1-nextjs&utm_content=github-banner-nextjsboilerplate-logo)
+- 💡 Absolute Imports using `@` prefix
+- 🗺️ Sitemap.xml and robots.txt
+- ⚙️ [Bundler Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
+
+Built-in feature from Next.js:
+
+- ☕ Minify HTML & CSS
+- 💨 Live reload
+- ✅ Cache busting
+
+### Requirements
+
+- Node.js 22.16+ and npm
+
+### Getting started
+
+You can run the project locally in development mode with live reload by executing:
+
+```shell
+npm run dev
+```
+
+Open http://localhost:3000 with your favorite browser to see your project.
+
+### Project structure
+
+```shell
+.
+├── README.md                       # README file
+├── .cursor                         # Cursor configuration
+├── .husky                          # Husky configuration
+├── public                          # Public assets folder
+├── src
+│   ├── assets                      # Assets folder
+│   ├── app                         # Next JS App (App Router)
+│   ├── components                  # React components
+│   ├── libs                        # 3rd party libraries configuration
+│   ├── locales                     # Locales folder (i18n messages)
+│   ├── types                       # Type definitions
+│   ├── utils                       # Utilities folder
+├── tests
+│   ├── e2e                         # E2E tests, also includes Monitoring as Code
+│   └── integration                 # Integration tests
+├── tailwind.config.js              # Tailwind CSS configuration
+└── tsconfig.json                   # TypeScript configuration
+```
+
+### Testing
+
+All unit tests are located alongside the source code in the same directory, making them easier to find. The project uses Vitest and React Testing Library for unit testing. You can run the tests with the following command:
+
+```shell
+npm run test:unit
+```
+
+### Integration & E2E Testing
+
+The project uses Playwright for integration and end-to-end (E2E) testing. You can run the tests with the following commands:
+
+```shell
+npx playwright install # Only for the first time in a new environment
+npm run test:e2e
+```
+
+### Deploy to production
+
+You can generate a production build with:
+
+```shell
+$ npm run build
+```
+
+It generates an optimized production build of the boilerplate. To test the generated build, run:
+
+```shell
+$ npm run start
+```
+
+This command starts a local server using the production build. You can now open http://localhost:3000 in your preferred browser to see the result.
+
+### Error Monitoring
+
+The project uses [Sentry](https://sentry.io/for/nextjs/?utm_source=github&utm_medium=paid-community&utm_campaign=general-fy25q1-nextjs&utm_content=github-banner-nextjsboilerplate-logo) to monitor errors. In the development environment, no additional setup is needed: Next.js Boilerplate is pre-configured to use Sentry and Spotlight (Sentry for Development). All errors will automatically be sent to your local Spotlight instance, allowing you to experience Sentry locally.
+
+For production environment, you'll need to create a Sentry account and a new project. Then, in `next.config.mjs`, you need to update the `org` and `project` attributes in `withSentryConfig` function. Additionally, add your Sentry DSN to `instrumentation-client.ts`, `instrumentation.ts`.
+
+### Useful commands
+
+#### Bundle Analyzer
+
+TechTus Next.js includes a built-in bundle analyzer. It can be used to analyze the size of your JavaScript bundles. To begin, run the following command:
+
+```shell
+npm run build-stats
+```
+
+By running the command, it'll automatically open a new browser window with the results.
