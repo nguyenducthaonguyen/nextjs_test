@@ -7,20 +7,20 @@ export async function generateMetadata(props: {
   const { locale } = await props.params;
   const t = await getTranslations({
     locale,
-    namespace: 'Index',
+    namespace: 'common',
   });
 
   return {
-    title: t('meta_title'),
+    title: t('title'),
   };
 }
 
 export default function Index() {
-  const t = useTranslations('Index');
+  const t = useTranslations('common');
 
   return (
     <div className="py-5 [&_p]:my-6">
-      <h1 className="text-3xl font-bold">{t('coming_soon')}</h1>
+      <h1 className="text-3xl font-bold">{t('app_name')}</h1>
     </div>
   );
 }
