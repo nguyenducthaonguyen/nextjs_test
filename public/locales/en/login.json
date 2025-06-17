@@ -1,0 +1,15 @@
+{
+  "title": "Sign in to your account",
+  "sub_title": "Enter your email address and password to access admin panel.",
+  "password_label": "Password",
+  "password_placeholder": "Enter password",
+  "username_label": "Username",
+  "username_placeholder": "Enter user name",
+  "forgot_password": "Forgot your password?",
+  "wrong_password": "User name or password is incorrect.",
+  "btn_login": "Log in",
+  "btn_login_google": "Log in with Google",
+  "remember_me": "Remember me",
+  "login_fail": "Login failed",
+  "or": "or"
+}

@@ -12,6 +12,7 @@
     "clean": "rimraf .next out coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "i18n:import": "node .i18n/script.js --source .i18n/source.xlsx --sheet-names \"Locale Messages, UI_Message\" --our-dir lang --ignored-cols \"Screen ID, Note, Type, Description, Created by\"",
     "check-types": "tsc --noEmit --pretty",
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
@@ -66,6 +67,7 @@
     "vite": "^6.3.5",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.1.3",
-    "vitest-fail-on-console": "^0.7.1"
+    "vitest-fail-on-console": "^0.7.1",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   }
 }
