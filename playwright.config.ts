@@ -32,6 +32,9 @@ export default defineConfig({
     url: baseURL,
     timeout: 2 * 60 * 1000,
     reuseExistingServer: !process.env.CI,
+    env: {
+      NEXT_PUBLIC_SENTRY_DISABLED: 'true',
+    },
   },
 
   // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.

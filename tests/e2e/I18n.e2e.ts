@@ -9,10 +9,10 @@ test.describe('Internationalization (i18n)', () => {
     await expect(page).toHaveURL('/');
 
     // Check that the page content is in English
-    await expect(page.getByText('Coming Soon')).toBeVisible();
+    await expect(page.getByText('Account Console')).toBeVisible();
 
     // Check page title contains the English meta title
-    await expect(page).toHaveTitle(/Dashboard/);
+    await expect(page).toHaveTitle(/Home/);
   });
 
   test('should display content in English when /en route is accessed', async ({ page }) => {
@@ -23,10 +23,10 @@ test.describe('Internationalization (i18n)', () => {
     await expect(page).toHaveURL('/');
 
     // Check that the page content is in English
-    await expect(page.getByText('Coming Soon')).toBeVisible();
+    await expect(page.getByText('Account Console')).toBeVisible();
 
     // Check page title contains the English meta title
-    await expect(page).toHaveTitle(/Dashboard/);
+    await expect(page).toHaveTitle(/Home/);
   });
 
   test('should display content in Japanese when /ja route is accessed', async ({ page }) => {
@@ -37,10 +37,10 @@ test.describe('Internationalization (i18n)', () => {
     await expect(page).toHaveURL('/ja');
 
     // Check that the page content is in Japanese
-    await expect(page.getByText('近日公開')).toBeVisible();
+    await expect(page.getByText('新事業精算システム')).toBeVisible();
 
     // Check page title contains the Japanese meta title
-    await expect(page).toHaveTitle(/ダッシュボード/);
+    await expect(page).toHaveTitle(/ホーム/);
   });
 
   test('should switch language when navigating between locales', async ({ page }) => {
@@ -48,19 +48,19 @@ test.describe('Internationalization (i18n)', () => {
     await page.goto('/en');
 
     await expect(page).toHaveURL('/');
-    await expect(page.getByText('Coming Soon')).toBeVisible();
+    await expect(page.getByText('Account Console')).toBeVisible();
 
     // Navigate to Japanese
     await page.goto('/ja');
 
     await expect(page).toHaveURL('/ja');
-    await expect(page.getByText('近日公開')).toBeVisible();
+    await expect(page.getByText('新事業精算システム')).toBeVisible();
 
     // Navigate back to English
     await page.goto('/en');
 
     await expect(page).toHaveURL('/');
-    await expect(page.getByText('Coming Soon')).toBeVisible();
+    await expect(page.getByText('Account Console')).toBeVisible();
   });
 
   test('should maintain the correct locale when navigating to different pages', async ({ page }) => {
@@ -71,6 +71,6 @@ test.describe('Internationalization (i18n)', () => {
     await page.goto('/ja');
 
     // Check that we're on the Japanese locale
-    await expect(page.getByText('近日公開')).toBeVisible();
+    await expect(page.getByText('新事業精算システム')).toBeVisible();
   });
 });
