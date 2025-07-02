@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { routing } from '@/libs/i18nRouting';
 import { getI18nPath } from './Helpers';
 

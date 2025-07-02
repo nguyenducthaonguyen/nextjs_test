@@ -50,19 +50,22 @@ Open http://localhost:3000 with your favorite browser to see your project.
 ├── README.md                       # README file
 ├── .cursor                         # Cursor configuration
 ├── .husky                          # Husky configuration
+├── .i18n                           # i18n scripts
 ├── public                          # Public assets folder
+│   ├── assets                      # Assets folder
+│   └── locales                     # Locales for i18n
 ├── src
 │   ├── assets                      # Assets folder
 │   ├── app                         # Next JS App (App Router)
 │   ├── components                  # React components
 │   ├── libs                        # 3rd party libraries configuration
-│   ├── locales                     # Locales folder (i18n messages)
 │   ├── types                       # Type definitions
 │   ├── utils                       # Utilities folder
+|   ├── instrumentation.ts          # Sentry instrumentation files
+│   ├── instrumentation-client.ts   # Sentry client-side instrumentation
 ├── tests
 │   ├── e2e                         # E2E tests, also includes Monitoring as Code
 │   └── integration                 # Integration tests
-├── tailwind.config.js              # Tailwind CSS configuration
 └── tsconfig.json                   # TypeScript configuration
 ```
 
@@ -81,6 +84,20 @@ The project uses Playwright for integration and end-to-end (E2E) testing. You ca
 ```shell
 npx playwright install # Only for the first time in a new environment
 npm run test:e2e
+```
+
+### Ligthouse Audit
+The project includes a built-in Lighthouse audit to analyze the performance of your application. You can run the audit with the following command:
+
+```shell
+npm run test:lighthouse
+```
+
+### Linting and Formatting
+The project uses ESLint and Prettier for linting and formatting. You can run the linter with the following command:
+
+```shell
+npm run lint
 ```
 
 ### Deploy to production
