@@ -1,4 +1,12 @@
+import type { ClassValue } from 'clsx';
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
 import { routing } from '@/libs/i18n-routing';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 export const getBaseUrl = () => {
   if (process.env.NEXT_PUBLIC_APP_URL) {
@@ -14,4 +22,8 @@ export const getI18nPath = (url: string, locale: string) => {
   }
 
   return `/${locale}${url}`;
+};
+
+export const createRouteMatcher = (routes: string[]) => {
+  return routes.map(route => new RegExp(`^${route}$`));
 };
