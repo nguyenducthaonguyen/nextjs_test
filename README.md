@@ -55,13 +55,16 @@ Open http://localhost:3000 with your favorite browser to see your project.
 │   ├── assets                      # Assets folder
 │   └── locales                     # Locales for i18n
 ├── src
-│   ├── assets                      # Assets folder
+│   ├── actions                     # Next JS server actions
 │   ├── app                         # Next JS App (App Router)
+│   ├── assets                      # Assets folder
 │   ├── components                  # React components
-│   ├── libs                        # 3rd party libraries configuration
+│   ├── libs                        # Libraries folder
+│   ├── models                      # Entity models for the application
+│   ├── services                    # Next JS Services (like api calls, logging, etc.)
 │   ├── types                       # Type definitions
 │   ├── utils                       # Utilities folder
-|   ├── instrumentation.ts          # Sentry instrumentation files
+│   ├── instrumentation.ts          # Sentry instrumentation files
 │   ├── instrumentation-client.ts   # Sentry client-side instrumentation
 ├── tests
 │   ├── e2e                         # E2E tests, also includes Monitoring as Code
