@@ -1,15 +1,14 @@
 {
-  "title": "Sign in to your account",
-  "sub_title": "Enter your email address and password to access admin panel.",
-  "password_label": "Password",
-  "password_placeholder": "Enter password",
-  "username_label": "Username",
-  "username_placeholder": "Enter user name",
+  "title": "Welcome back",
+  "sub_title": "Login with your Apple or Google account",
+  "login_with_apple": "Login with Apple",
+  "login_with_google": "Login with Google",
+  "continue_with": "Or continue with",
+  "email": "Email",
+  "email_placeholder": "m@example.com",
+  "password": "Password",
   "forgot_password": "Forgot your password?",
-  "wrong_password": "User name or password is incorrect.",
-  "btn_login": "Log in",
-  "btn_login_google": "Log in with Google",
-  "remember_me": "Remember me",
-  "login_fail": "Login failed",
-  "or": "or"
+  "sign_in": "Sign in",
+  "no_account": "Don't have an account?",
+  "sign_up": "Sign up"
 }
