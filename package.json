@@ -1,6 +1,6 @@
 {
   "name": "techtus-nextjs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "packageManager": "npm@10.9.2",
   "engines": {
     "node": ">=22.16.0"
@@ -11,6 +11,7 @@
     "start": "next start",
     "build-stats": "cross-env ANALYZE=true npm run build",
     "clean": "rimraf .next out coverage",
+    "release": "changelogen --release",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "i18n:import": "node .i18n/script.js --source .i18n/source.xlsx --sheet-names \"Locale Messages, UI_Message\" --our-dir lang --ignored-cols \"Screen ID, Note, Type, Description, Created by\"",
@@ -88,6 +89,7 @@
     "@vitejs/plugin-react": "^4.6.0",
     "@vitest/browser": "^3.2.4",
     "@vitest/coverage-v8": "^3.2.4",
+    "changelogen": "^0.6.2",
     "cross-env": "^7.0.3",
     "eslint": "^9.26.0",
     "eslint-plugin-format": "^1.0.1",
