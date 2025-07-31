@@ -57,8 +57,9 @@ Open http://localhost:3000 with your favorite browser to see your project.
 ├── src
 │   ├── actions                     # Next JS server actions
 │   ├── app                         # Next JS App (App Router)
-│   ├── assets                      # Assets folder
+│   ├── styles                      # Styles folder
 │   ├── components                  # React components
+│   ├── constants                   # Constants folder
 │   ├── libs                        # Libraries folder
 │   ├── models                      # Entity models for the application
 │   ├── services                    # Next JS Services (like api calls, logging, etc.)
