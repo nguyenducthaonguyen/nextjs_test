@@ -3,6 +3,7 @@
 import type { LoginFormData } from '@/validations/login-validation';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { AUTH_STORAGE_KEY } from '@/constants/storage';
 
 export async function login(data: LoginFormData) {
   // Simulate authentication delay
@@ -15,7 +16,7 @@ export async function login(data: LoginFormData) {
     // Store the JWT token in cookies
     const cookieStore = await cookies();
     const secure = process.env.NODE_ENV === 'production';
-    cookieStore.set('auth.access_token', '<JWT_TOKEN>', {
+    cookieStore.set(AUTH_STORAGE_KEY.ACCESS_TOKEN, '<JWT_TOKEN>', {
       httpOnly: true,
       secure,
       sameSite: 'strict',
