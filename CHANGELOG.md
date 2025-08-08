@@ -1,4 +1,16 @@
 
+## v1.1.1
+
+[compare changes](https://nal.bitbucket.org/nal-solutions/nals-fe-reactjs/compare/v1.1.0...v1.1.1)
+
+### 🩹 Fixes
+
+- Correct transform css chart.tsx (8506f8e)
+
+### ❤️ Contributors
+
+- Trungvv <trungvv@mynavitechtus.com>
+
 ## v1.1.0
 
 
