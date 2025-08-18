@@ -8,6 +8,7 @@ export type ApiResponse<T = any> = {
   data?: T;
   message?: string;
   errors?: Record<string, string[]>;
+  raw: Response;
 };
 
 // Error types for different scenarios
@@ -25,11 +26,23 @@ export class ApiError extends Error {
   }
 }
 
+export const RESPONSE_TYPES = {
+  JSON: 'json',
+  TEXT: 'text',
+  BLOB: 'blob',
+  ARRAY_BUFFER: 'arrayBuffer',
+  FORM_DATA: 'formData',
+} as const;
+
+// Response types for different content handling
+export type ResponseType = (typeof RESPONSE_TYPES)[keyof typeof RESPONSE_TYPES];
+
 // Request configuration interface
 export type RequestConfig = {
   timeout?: number;
   baseURL?: string;
   params?: Record<string, any>;
+  responseType?: ResponseType;
 } & RequestInit;
 
 // Default configuration
@@ -50,6 +63,34 @@ function createTimeoutPromise(timeout: number): Promise<never> {
   return new Promise((_, reject) => {
     setTimeout(() => reject(new Error('Request timeout')), timeout);
   });
+}
+
+/**
+ * Safely parses response based on content length and response type
+ */
+async function parseResponse<T>(response: Response, responseType?: ResponseType): Promise<T | null> {
+  // Check content length to avoid parsing empty responses
+  const contentLength = response.headers.get('content-length');
+  const hasContent = contentLength && Number(contentLength) > 0;
+
+  if (!hasContent) {
+    return null;
+  }
+
+  switch (responseType) {
+    case RESPONSE_TYPES.JSON:
+      return await response.json() as T;
+    case RESPONSE_TYPES.TEXT:
+      return await response.text() as T;
+    case RESPONSE_TYPES.BLOB:
+      return await response.blob() as T;
+    case RESPONSE_TYPES.ARRAY_BUFFER:
+      return await response.arrayBuffer() as T;
+    case RESPONSE_TYPES.FORM_DATA:
+      return await response.formData() as T;
+    default:
+      return null;
+  }
 }
 
 /**
@@ -86,6 +127,7 @@ export class HttpClient {
       baseURL = this.baseURL,
       params,
       headers = {},
+      responseType = 'json',
       ...fetchConfig
     } = config;
 
@@ -121,14 +163,14 @@ export class HttpClient {
         throw new ApiError('Request timeout', 408);
       }
 
-      // Parse response
+      // Parse response using the safe parser
       let data: any;
-      const contentType = response.headers.get('content-type');
-
-      if (contentType && contentType.includes('application/json')) {
-        data = await response.json();
-      } else {
-        data = await response.text();
+      try {
+        data = await parseResponse(response, responseType);
+      } catch (parseError) {
+        // If parsing fails, handle gracefully
+        console.warn('Response parsing failed:', parseError);
+        data = null;
       }
 
       // Handle HTTP errors
@@ -142,6 +184,7 @@ export class HttpClient {
         success: true,
         data,
         message: data?.message,
+        raw: response,
       };
     } catch (error) {
       // Handle network errors and API errors
