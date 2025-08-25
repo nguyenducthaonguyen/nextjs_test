@@ -1,9 +1,9 @@
 'use server';
 
-import type { LoginFormData } from '@/validations/login-validation';
+import type { LoginFormData } from '@/entities/user';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { AUTH_STORAGE_KEY } from '@/constants/storage';
+import { AUTH_STORAGE_KEY } from '@/shared/config/storage';
 
 export async function login(data: LoginFormData) {
   // Simulate authentication delay

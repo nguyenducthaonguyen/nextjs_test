@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import { getBaseUrl } from '@/utils/helpers';
+import { getBaseUrl } from '@/shared/lib/helpers';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

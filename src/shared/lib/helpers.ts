@@ -2,7 +2,7 @@ import type { ClassValue } from 'clsx';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-import { routing } from '@/libs/i18n-routing';
+import { routing } from '@/shared/lib/i18n-routing';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

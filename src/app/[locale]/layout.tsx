@@ -4,8 +4,8 @@ import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import { ThemeProvider } from '@/components/theme/theme-provider';
-import { routing } from '@/libs/i18n-routing';
-import '@/styles/globals.css';
+import { routing } from '@/shared/lib/i18n-routing';
+import '@/shared/styles/globals.css';
 
 export const metadata: Metadata = {
   icons: [

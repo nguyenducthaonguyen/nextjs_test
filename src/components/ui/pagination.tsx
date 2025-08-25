@@ -9,7 +9,7 @@ import {
 
 import * as React from 'react';
 import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/utils/helpers';
+import { cn } from '@/shared/lib/helpers';
 
 function Pagination({ className, ...props }: React.ComponentProps<'nav'>) {
   return (
