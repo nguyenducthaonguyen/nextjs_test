@@ -1,4 +1,25 @@
 
+## v1.1.2
+
+[compare changes](https://nal.bitbucket.org/nal-solutions/nals-fe-reactjs/compare/v1.1.1...v1.1.2)
+
+### 🩹 Fixes
+
+- Wrong tailwindcss class after formatted code (aa0f922)
+
+### 💅 Refactors
+
+- Clean architecture (32806ba)
+
+### 🏡 Chore
+
+- Update api response handler (e910504)
+- Add DESIGN_SYSTEM document (ff26c64)
+
+### ❤️ Contributors
+
+- Trungvv <trungvv@mynavitechtus.com>
+
 ## v1.1.1
 
 [compare changes](https://nal.bitbucket.org/nal-solutions/nals-fe-reactjs/compare/v1.1.0...v1.1.1)
