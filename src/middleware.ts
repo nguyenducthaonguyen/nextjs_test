@@ -2,10 +2,10 @@ import type { NextRequest } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 
-import { AppConfig } from '@/constants/app-config';
-import { AUTH_STORAGE_KEY } from '@/constants/storage';
-import { routing } from '@/libs/i18n-routing';
-import { createRouteMatcher } from '@/utils/helpers';
+import { AppConfig } from '@/shared/config/app-config';
+import { AUTH_STORAGE_KEY } from '@/shared/config/storage';
+import { createRouteMatcher } from '@/shared/lib/helpers';
+import { routing } from '@/shared/lib/i18n-routing';
 
 const handleI18nRouting = createMiddleware(routing);
 

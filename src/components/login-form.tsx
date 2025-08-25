@@ -1,11 +1,11 @@
 'use client';
 
-import type { LoginFormData } from '@/validations/login-validation';
+import type { LoginFormData } from '@/entities/user';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useState, useTransition } from 'react';
 
+import { useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import { login } from '@/actions/auth-action';
 import { Button } from '@/components/ui/button';
@@ -19,7 +19,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { createLoginFormSchema } from '@/validations/login-validation';
+import { createLoginFormSchema } from '@/entities/user';
 
 export default function LoginForm() {
   const t = useTranslations();

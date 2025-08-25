@@ -56,15 +56,22 @@ Open http://localhost:3000 with your favorite browser to see your project.
 │   └── locales                     # Locales for i18n
 ├── src
 │   ├── actions                     # Next JS server actions
+│   │   └── <feature-action>.ts     # Action files
 │   ├── app                         # Next JS App (App Router)
-│   ├── styles                      # Styles folder
 │   ├── components                  # React components
-│   ├── constants                   # Constants folder
-│   ├── libs                        # Libraries folder
-│   ├── models                      # Entity models for the application
-│   ├── services                    # Next JS Services (like api calls, logging, etc.)
-│   ├── types                       # Type definitions
-│   ├── utils                       # Utilities folder
+│   │   ├── ui                      # UI components (buttons, modals, etc.)
+│   │   ├── layout                  # Layout components (headers, footers, etc.)
+│   │   └── <feature_name>          # Feature components (specific to a feature)
+│   ├── entities                    # Domain entities (core business models)
+│   │   └── <entity_name>.ts        # Types, domain logic, validation
+│   ├── shared                      # Reusable cross-cutting code
+│   │   ├── api                     # Base API clients, interceptors
+│   │   ├── config                  # Environment variables, Constants, etc.
+│   │   ├── hooks                   # Generic React hooks
+│   │   ├── lib                     # Helpers, formatters, fetcher
+│   │   ├── services                # Services (like api calls, logging, etc.)
+│   │   └── styles                  # Tailwind, tokens, themes
+│   ├── types                       # Type definitions (global types, utility types, etc.)
 │   ├── instrumentation.ts          # Sentry instrumentation files
 │   ├── instrumentation-client.ts   # Sentry client-side instrumentation
 ├── tests
