@@ -1,4 +1,3 @@
-import type { TFunction } from '@/types/i18n';
 import { z } from 'zod';
 
 export const createLoginFormSchema = (t: TFunction) => z.object({

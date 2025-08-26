@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
-import { routing } from '@/shared/lib/i18n-routing';
-import { getI18nPath } from './helpers';
+import { routing } from '@/lib/i18n-routing';
+import { getI18nPath } from './utils';
 
-describe('Helpers', () => {
+describe('Utils', () => {
   describe('getI18nPath function', () => {
     it('should not change the path for default language', () => {
       const url = '/random-url';
