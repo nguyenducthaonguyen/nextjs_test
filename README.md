@@ -56,7 +56,7 @@ Open http://localhost:3000 with your favorite browser to see your project.
 │   └── locales                     # Locales for i18n
 ├── src
 │   ├── actions                     # Next JS server actions
-│   │   └── <feature-action>.ts     # Action files
+│   │   └── [feature-action].ts     # Action files
 │   ├── app                         # Next JS App (App Router)
 │   │   ├─ [locale]                 # Locale-specific routes
 │   │   │   ├─ (routes)             # Route groups
@@ -64,14 +64,14 @@ Open http://localhost:3000 with your favorite browser to see your project.
 │   │   │   └─ page.tsx             # Root page
 │   ├── components                  # React components
 │   │   ├── ui                      # UI components (buttons, modals, etc.)
-│   │   └── <feature-name>          # Feature components (specific to a feature)
+│   │   ├── templates               # Template components (header, footer, Dashboard, etc)
+│   │   └── [feature-name]          # Feature components (specific to a feature)
 │   ├── config                      # Environment variables, Constants, etc.
 │   ├── entities                    # Domain entities (core business models)
-│   │   └── <entity-name>.ts        # Types, domain logic, validation
+│   │   └── [entity-name].ts        # Types, domain logic, validation
 │   ├── hooks                       # Generic React hooks
 │   ├── lib                         # Helpers, utilities, 3rd party libraries configuration
 │   ├── styles                      # Tailwind, tokens, themes
-│   ├── templates                   # Template components (header, footer, Dashboard, etc)
 │   ├── instrumentation.ts          # Sentry instrumentation files
 │   ├── instrumentation-client.ts   # Sentry client-side instrumentation
 │   └── middleware.ts               # Middleware for handling requests

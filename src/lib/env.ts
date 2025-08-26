@@ -1,15 +1,15 @@
 import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod/v4-mini';
+import z from 'zod';
 
 export const Env = createEnv({
   server: {},
   client: {
-    NEXT_PUBLIC_APP_URL: z.optional(z.string()),
+    NEXT_PUBLIC_APP_URL: z.string().optional(),
   },
   shared: {
-    NODE_ENV: z.optional(z.enum(['test', 'development', 'production'])),
-    NEXT_PUBLIC_API_URL: z.optional(z.string()),
-    NEXT_SERVER_ACTIONS_ENCRYPTION_KEY: z.optional(z.string()),
+    NODE_ENV: z.enum(['test', 'development', 'production']).optional(),
+    NEXT_PUBLIC_API_URL: z.string().optional(),
+    NEXT_SERVER_ACTIONS_ENCRYPTION_KEY: z.string().optional(),
   },
   // You need to destructure all the keys manually
   runtimeEnv: {
