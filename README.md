@@ -47,38 +47,50 @@ Open http://localhost:3000 with your favorite browser to see your project.
 
 ```shell
 .
-├── README.md                       # README file
-├── .cursor                         # Cursor configuration
-├── .husky                          # Husky configuration
-├── .i18n                           # i18n scripts
-├── public                          # Public assets folder
-│   ├── assets                      # Assets folder
-│   └── locales                     # Locales for i18n
+├── README.md                                   # README file
+├── .husky                                      # Husky configuration
+├── .i18n                                       # I18n scripts
+├── public                                      # Public assets folder
+│   ├── assets                                  # Assets folder
+│   └── locales                                 # Locales for i18n
 ├── src
-│   ├── actions                     # Next JS server actions
-│   │   └── [feature-action].ts     # Action files
-│   ├── app                         # Next JS App (App Router)
-│   │   ├─ [locale]                 # Locale-specific routes
-│   │   │   ├─ (routes)             # Route groups
-│   │   │   ├─ layout.tsx           # Root layout
-│   │   │   └─ page.tsx             # Root page
-│   ├── components                  # React components
-│   │   ├── ui                      # UI components (buttons, modals, etc.)
-│   │   ├── templates               # Template components (header, footer, Dashboard, etc)
-│   │   └── [feature-name]          # Feature components (specific to a feature)
-│   ├── config                      # Environment variables, Constants, etc.
-│   ├── entities                    # Domain entities (core business models)
-│   │   └── [entity-name].ts        # Types, domain logic, validation
-│   ├── hooks                       # Generic React hooks
-│   ├── lib                         # Helpers, utilities, 3rd party libraries configuration
-│   ├── styles                      # Tailwind, tokens, themes
-│   ├── instrumentation.ts          # Sentry instrumentation files
-│   ├── instrumentation-client.ts   # Sentry client-side instrumentation
-│   └── middleware.ts               # Middleware for handling requests
+│   ├── actions                                 # Next JS server actions
+│   │   └── [feature-action].ts                 # Action files
+│   ├── app                                     # Next JS App (App Router)
+│   │   ├─ [locale]                             # Locale-specific routes
+│   │   │   ├─ (routes)                         # Route groups
+│   │   │   ├─ layout.tsx                       # Root layout
+│   │   │   └─ page.tsx                         # Root page
+│   │   ├─ global-error.tsx                     # Global components
+│   │   ├─ robots.ts                            # Robots.txt
+│   │   └─ sitemap.ts                           # Sitemap.xml
+│   ├── components                              # React components
+│   │   ├── ui                                  # UI components (buttons, modals, etc.)
+│   │   ├── templates                           # Template components (header, footer, Dashboard, etc)
+│   │   ├── shared                              # Shared components across features
+│   │   └── [feature-name]                      # Feature components (specific to a feature)
+│   │       ├── shared                          # Shared components for the feature
+│   │       └── [component-name].ts             # Component files for the feature
+│   ├── config                                  # Environment variables, Constants, etc.
+│   ├── entities                                # Domain entities (core business models)
+│   │   └── [entity-name].ts                    # Types, domain logic, validation
+│   ├── hooks                                   # Generic React hooks
+│   ├── lib                                     # Helpers, utilities, 3rd party libraries configuration
+│   ├── stores                                  # State management (Zustand, Redux, etc.)
+│   ├── styles                                  # Tailwind, tokens, themes, global styles
+│   │   ├── components                          # Component-specific styles
+│   │   │    └── [component-name].module.scss   # Component-specific styles
+│   │   ├── pages                               # Page-specific styles
+│   │   │    └── [page-name].module.scss        # Page-specific styles
+│   │   └── globals.scss                        # Global styles
+│   ├── types                                   # Global types, utilities types
+│   ├── instrumentation.ts                      # Sentry instrumentation files
+│   ├── instrumentation-client.ts               # Sentry client-side instrumentation
+│   └── middleware.ts                           # Middleware for handling requests
 ├── tests
-│   ├── e2e                         # E2E tests, also includes Monitoring as Code
-│   └── integration                 # Integration tests
-└── tsconfig.json                   # TypeScript configuration
+│   ├── e2e                                     # E2E tests, also includes Monitoring as Code
+│   └── integration                             # Integration tests
+└── tsconfig.json                               # TypeScript configuration
 ```
 
 ### Testing
