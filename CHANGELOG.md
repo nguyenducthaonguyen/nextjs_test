@@ -1,4 +1,17 @@
 
+## v1.1.3
+
+[compare changes](https://nal.bitbucket.org/nal-solutions/nals-fe-reactjs/compare/v1.1.2...v1.1.3)
+
+### 💅 Refactors
+
+- Clean architecture (4bf4a41)
+- Add stores & types folder, remove .cursor, restruct styles module (0bb1e85)
+
+### ❤️ Contributors
+
+- Trungvv <trungvv@mynavitechtus.com>
+
 ## v1.1.2
 
 [compare changes](https://nal.bitbucket.org/nal-solutions/nals-fe-reactjs/compare/v1.1.1...v1.1.2)
