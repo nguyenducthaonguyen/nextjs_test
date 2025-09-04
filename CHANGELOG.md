@@ -1,4 +1,16 @@
 
+## v1.1.4
+
+[compare changes](https://nal.bitbucket.org/nal-solutions/nals-fe-reactjs/compare/v1.1.3...v1.1.4)
+
+### 🏡 Chore
+
+- Remove unlighthouse (8196dc6)
+
+### ❤️ Contributors
+
+- Trungvv <trungvv@mynavitechtus.com>
+
 ## v1.1.3
 
 [compare changes](https://nal.bitbucket.org/nal-solutions/nals-fe-reactjs/compare/v1.1.2...v1.1.3)
