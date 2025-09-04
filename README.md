@@ -110,13 +110,6 @@ npx playwright install # Only for the first time in a new environment
 npm run test:e2e
 ```
 
-### Ligthouse Audit
-The project includes a built-in Lighthouse audit to analyze the performance of your application. You can run the audit with the following command:
-
-```shell
-npm run test:lighthouse
-```
-
 ### Linting and Formatting
 The project uses ESLint and Prettier for linting and formatting. You can run the linter with the following command:
 
