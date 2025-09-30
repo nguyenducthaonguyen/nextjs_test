@@ -43,6 +43,22 @@ npm run dev
 
 Open http://localhost:3000 with your favorite browser to see your project.
 
+### Docker
+
+Build the production image (standalone output) with:
+
+```shell
+docker build -t nals-fe-reactjs .
+```
+
+Run the container locally and expose it on port 3000:
+
+```shell
+docker run --rm -p 3000:3000 --env-file .env.production nals-fe-reactjs
+```
+
+Replace `.env.production` with the file that holds your production-ready environment variables before deploying.
+
 ### Project structure
 
 ```shell
