@@ -18,7 +18,7 @@ Developer experience first, extremely flexible code structure and only keep what
 - 🚫 Lint-staged for running linters on Git staged files
 - 🦺 Unit Testing with Vitest and React Testing Library
 - 🧪 Integration and E2E Testing with Playwright
-- 🚨 Error Monitoring with [Sentry](https://sentry.io/for/nextjs/?utm_source=github&utm_medium=paid-community&utm_campaign=general-fy25q1-nextjs&utm_content=github-banner-nextjsboilerplate-logo)
+- 🚨 Error Monitoring with [Sentry](https://sentry.io/for/nextjs)
 - 💡 Absolute Imports using `@` prefix
 - 🗺️ Sitemap.xml and robots.txt
 - ⚙️ [Bundler Analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
@@ -42,22 +42,6 @@ npm run dev
 ```
 
 Open http://localhost:3000 with your favorite browser to see your project.
-
-### Docker
-
-Build the production image (standalone output) with:
-
-```shell
-docker build -t nals-fe-reactjs .
-```
-
-Run the container locally and expose it on port 3000:
-
-```shell
-docker run --rm -p 3000:3000 --env-file .env.production nals-fe-reactjs
-```
-
-Replace `.env.production` with the file that holds your production-ready environment variables before deploying.
 
 ### Project structure
 
@@ -149,9 +133,25 @@ $ npm run start
 
 This command starts a local server using the production build. You can now open http://localhost:3000 in your preferred browser to see the result.
 
+### Docker
+
+Build the production image (standalone output) with:
+
+```shell
+docker build -t nals-fe-reactjs .
+```
+
+Run the container locally and expose it on port 3000:
+
+```shell
+docker run --rm -p 3000:3000 --env-file .env.production nals-fe-reactjs
+```
+
+Replace `.env.production` with the file that holds your production-ready environment variables before deploying.
+
 ### Error Monitoring
 
-The project uses [Sentry](https://sentry.io/for/nextjs/?utm_source=github&utm_medium=paid-community&utm_campaign=general-fy25q1-nextjs&utm_content=github-banner-nextjsboilerplate-logo) to monitor errors. In the development environment, no additional setup is needed: Next.js Boilerplate is pre-configured to use Sentry and Spotlight (Sentry for Development). All errors will automatically be sent to your local Spotlight instance, allowing you to experience Sentry locally.
+The project uses [Sentry](https://sentry.io/for/nextjs/) to monitor errors. In the development environment, no additional setup is needed: Next.js Boilerplate is pre-configured to use Sentry and Spotlight (Sentry for Development). All errors will automatically be sent to your local Spotlight instance, allowing you to experience Sentry locally.
 
 For production environment, you'll need to create a Sentry account and a new project. Then, in `next.config.mjs`, you need to update the `org` and `project` attributes in `withSentryConfig` function. Additionally, add your Sentry DSN to `instrumentation-client.ts`, `instrumentation.ts`.
 
@@ -166,3 +166,7 @@ npm run build-stats
 ```
 
 By running the command, it'll automatically open a new browser window with the results.
+
+### Deploy to AWS Amplify
+- [Making environment variables accessible to server-side runtimes](https://docs.aws.amazon.com/amplify/latest/userguide/ssr-environment-variables.html)
+- [Failed to find Server Action](https://nextjs.org/docs/app/guides/data-security#overwriting-encryption-keys-advanced)
