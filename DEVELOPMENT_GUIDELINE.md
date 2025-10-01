@@ -12,7 +12,7 @@ This comprehensive guide outlines best practices, conventions, and standards for
 - **Styling**: Tailwind CSS 4, Shadcn UI, Radix UI
 - **Form Handling**: React Hook Form + Zod validation
 - **Data Sanitization**: DOMPurify
-- **Internationalization**: next-i18next
+- **Internationalization**: next-intl
 - **Testing**: Vitest, React Testing Library, Playwright
 - **Code Quality**: ESLint + Prettier + TypeScript strict mode
 
@@ -37,7 +37,7 @@ This comprehensive guide outlines best practices, conventions, and standards for
 
 #### Code Style Standards
 
-- Use tabs for indentation
+- Use tabs for indentation (2 spaces per tab)
 - Use single quotes for strings (except to avoid escaping)
 - Omit semicolons (unless required for disambiguation)
 - Eliminate unused variables
@@ -51,6 +51,7 @@ This comprehensive guide outlines best practices, conventions, and standards for
 - Always handle error parameters in callbacks
 - Limit line length to 80 characters
 - Use trailing commas in multiline object/array literals
+- Absolute Imports using `@` prefix
 
 ### Naming Conventions
 
@@ -232,6 +233,20 @@ export default async function PostsPage({ searchParams }: PostsPageProps) {
 }
 ```
 
+### Reusable Components
+
+- The project promotes modular and scalable UI development through a clear separation of reusable component layers:
+
+  - `src/components/ui`: Low-level, atomic UI components (e.g., buttons, inputs, modals)
+  - `src/components/templates`: Higher-level layout components (e.g., headers, footers, dashboards)
+  - `src/components/shared`: Shared components used across multiple features (e.g., user avatar, notifications)
+  - `src/components/[feature-name]`: Feature-specific components encapsulated within their own directories
+  - `src/components/[feature-name]/shared`: Shared components specific to a feature
+
+- Reuse components across features to promote consistency and reduce duplication.
+- Shared components must be pure components with clear documentation and usage examples.
+- Review the documentation in `src/docs/components/` to determine whether an existing shared component fits your needs or can be adjusted before creating a new one.
+
 #### Server Actions & API Calls
 - Use server actions for form submissions, data fetching, and data mutations.
 - Store actions in `src/actions/` directory.
@@ -366,6 +381,7 @@ function isUser(obj: unknown): obj is User {
 - Ensure color contrast ratios meet accessibility standards for readability
 - Respect Tailwind token strategy: define new tokens in `src/styles/globals.css` and document in `src/styles/DESIGN_SYSTEM.md` to support easy theming and maintainability.
 - Maintain consistent spacing values to establish visual harmony
+- Use the `cn` utility for conditional class names and combining Tailwind classes
 
 ```tsx
 // Example: Styled component with Tailwind and dark mode
@@ -471,50 +487,6 @@ DO: Use both fonts via the `font-sans`, `font-serif` and `font-mono` classes in 
 DON'T: Mix margin/padding with gap utilities on the same element
 DON'T: Use arbitrary values unless absolutely necessary: avoid `w-[347px]`
 DON'T: Use `!important` or arbitrary properties
-
-## Testing Strategy
-
-### Unit Testing
-
-- Write thorough unit tests to validate individual functions and components
-- Use Vitest and React Testing Library for reliable and efficient testing of React components
-- Follow patterns like Arrange-Act-Assert to ensure clarity and consistency in tests
-- Mock external dependencies and API calls to isolate unit tests
-
-### Integration Testing
-
-- Focus on user workflows to ensure app functionality
-- Set up and tear down test environments properly to maintain test independence
-- Use snapshot testing selectively to catch unintended UI changes without over-relying on it
-- Leverage testing utilities (e.g., screen in RTL) for cleaner and more readable tests
-
-```tsx
-// Example: Component testing with React Testing Library
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { UserProfile } from "@/components/user-profile";
-
-describe("UserProfile Component", () => {
-  test("displays user information correctly", async () => {
-    const mockUser = {
-      id: "1",
-      name: "John Doe",
-      email: "john@example.com",
-    };
-
-    render(<UserProfile userId="1" />);
-
-    await waitFor(() => {
-      expect(screen.getByText("John Doe")).toBeInTheDocument();
-      expect(screen.getByText("john@example.com")).toBeInTheDocument();
-    });
-  });
-
-  test("handles loading state", () => {
-    render(<UserProfile userId="1" />);
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
-  });
-});
-```
 
 ## Error Handling and Validation
 
@@ -736,9 +708,9 @@ export function SafeHtml({ html, className }: SafeHtmlProps) {
 
 ## Internationalization (i18n)
 
-### Implementation with next-i18next
+### Implementation with next-intl
 
-- Use next-i18next for translations
+- Use next-intl for translations
 - Implement proper locale detection
 - Use proper number and date formatting
 - Implement proper RTL support
@@ -873,4 +845,3 @@ logger.error('Error message', errorObject);
 - [Shadcn UI Documentation](https://ui.shadcn.com/)
 - [React Hook Form Documentation](https://react-hook-form.com/)
 - [Zod Documentation](https://zod.dev/)
-- [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
