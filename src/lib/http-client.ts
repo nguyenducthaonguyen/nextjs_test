@@ -281,3 +281,5 @@ export class HttpClient {
     this.defaultHeaders = headers;
   }
 }
+
+export const httpClient = new HttpClient();

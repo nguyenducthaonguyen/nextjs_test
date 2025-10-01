@@ -50,6 +50,8 @@ Open http://localhost:3000 with your favorite browser to see your project.
 ├── README.md                                   # README file
 ├── .husky                                      # Husky configuration
 ├── .i18n                                       # I18n scripts
+├── docs                                        # Documentation folder
+│   └── components                              # Documentation components
 ├── public                                      # Public assets folder
 │   ├── assets                                  # Assets folder
 │   └── locales                                 # Locales for i18n
@@ -88,6 +90,7 @@ Open http://localhost:3000 with your favorite browser to see your project.
 │   ├── instrumentation-client.ts               # Sentry client-side instrumentation
 │   └── middleware.ts                           # Middleware for handling requests
 ├── tests
+│   ├── unit                                    # Unit tests
 │   ├── e2e                                     # E2E tests, also includes Monitoring as Code
 │   └── integration                             # Integration tests
 └── tsconfig.json                               # TypeScript configuration
