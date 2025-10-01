@@ -300,16 +300,6 @@ export default function ProfileForm() {
 }
 ```
 
-### Error Handling
-
-- Implement route-level error boundaries using `error.tsx` files for recoverable UI failures and lean on `global-error.tsx` for app-wide fallbacks; capture exceptions with Sentry instrumentation as shown in `src/app/global-error.tsx`.
-- Surface 404 states with the dedicated `not-found.tsx` pattern or the `notFound()` helper, and rely on `redirect()` for control-flow changes inside Server Components or actions instead of throwing general errors.
-- Wrap Server Actions and server-side utilities in `try/catch` blocks, log with `Logger.create('<Context>')`, and return typed result objects so clients can render deterministic error messaging.
-- Normalize API failures through the shared `HttpClient` (`src/lib/http-client.ts`) which raises `ApiError`; always map these to user-facing messages and fallbacks rather than exposing raw error payloads.
-- Pair suspenseful UI states with graceful fallbacks (loading spinners, skeletons, retry affordances) and avoid leaving transitions pending indefinitely—show toast/inline feedback when retries are available.
-- Guard middleware and edge handlers against unexpected input; short-circuit with `NextResponse.next()` or redirects instead of throwing to prevent cascading failures.
-- Treat logging and monitoring as part of error handling: tag Sentry events with locale/user context when available and scrub any sensitive data before sending.
-
 ### TypeScript Implementation
 
 - Enable strict mode
@@ -676,6 +666,13 @@ export default function LoginForm() {
 
 ### Error Handling
 
+- Implement route-level error boundaries using `error.tsx` files for recoverable UI failures and lean on `global-error.tsx` for app-wide fallbacks; capture exceptions with Sentry instrumentation as shown in `src/app/global-error.tsx`.
+- Surface 404 states with the dedicated `not-found.tsx` pattern or the `notFound()` helper, and rely on `redirect()` for control-flow changes inside Server Components or actions instead of throwing general errors.
+- Wrap Server Actions and server-side utilities in `try/catch` blocks, log with `Logger.create('<Context>')`, and return typed result objects so clients can render deterministic error messaging.
+- Normalize API failures through the shared `HttpClient` (`src/lib/http-client.ts`) which raises `ApiError`; always map these to user-facing messages and fallbacks rather than exposing raw error payloads.
+- Pair suspenseful UI states with graceful fallbacks (loading spinners, skeletons, retry affordances) and avoid leaving transitions pending indefinitely—show toast/inline feedback when retries are available.
+- Guard middleware and edge handlers against unexpected input; short-circuit with `NextResponse.next()` or redirects instead of throwing to prevent cascading failures.
+- Treat logging and monitoring as part of error handling: tag Sentry events with locale/user context when available and scrub any sensitive data before sending.
 
 
 ## Performance Optimization
