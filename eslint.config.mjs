@@ -22,12 +22,14 @@ export default antfu(
     // Format settings
     formatters: {
       css: true,
+      markdown: true,
     },
 
     // Ignored paths
     ignores: [
       'public/**/*',
       '.i18n/**/*',
+      '**/*.md',
     ],
   },
   // --- Next.js Specific Rules ---
