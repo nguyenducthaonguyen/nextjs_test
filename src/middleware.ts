@@ -2,19 +2,21 @@ import type { NextRequest } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 
-import { AppConfig } from '@/config/app-config';
+import { localeMatcher } from '@/config/app-config';
 import { AUTH_STORAGE_KEY } from '@/config/storage';
 import { routing } from '@/lib/i18n-routing';
 import { createRouteMatcher } from '@/lib/utils';
+import { Logger } from './lib/logger';
 
+const middlewareLogger = Logger.create('middleware');
 const handleI18nRouting = createMiddleware(routing);
 
 const protectedRoutes = createRouteMatcher([
-  '/dashboard(.*)',
-  `/(?<locale>${AppConfig.locales.join('|')})/dashboard(.*)`,
+  `${localeMatcher}/dashboard(.*)`,
 ]);
 
 export default async function middleware(request: NextRequest) {
+  const response = handleI18nRouting(request);
   const { pathname } = request.nextUrl;
 
   // Check if current path is protected
@@ -22,15 +24,16 @@ export default async function middleware(request: NextRequest) {
 
   // Get authentication token from cookies
   const token = request.cookies.get(AUTH_STORAGE_KEY.ACCESS_TOKEN)?.value;
+  middlewareLogger.info(`Handling request for pathname: ${pathname} with token: ${token ? 'present' : 'absent'}`);
 
   // If the route is protected and no token is found, redirect to login
   if (isProtectedRoute && !token) {
-    const loginUrl = new URL('login', request.url);
+    const redirectUrl = new URL('/login', request.nextUrl.origin);
 
-    return NextResponse.redirect(loginUrl);
+    return NextResponse.redirect(redirectUrl);
   }
 
-  return handleI18nRouting(request);
+  return response;
 }
 
 export const config = {
