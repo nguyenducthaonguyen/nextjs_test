@@ -12,6 +12,54 @@ const baseConfig: NextConfig = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              'default-src \'self\'',
+              // Next.js requires 'unsafe-eval' in dev mode for hot reloading
+              // Next.js also requires 'unsafe-inline' for React DevTools and HMR
+              process.env.NODE_ENV === 'development'
+                ? 'script-src \'self\' \'unsafe-eval\' \'unsafe-inline\''
+                : 'script-src \'self\' \'unsafe-inline\'', // Consider using nonces in production
+              'style-src \'self\' \'unsafe-inline\'', // Tailwind requires 'unsafe-inline'
+              'img-src \'self\' data: https: blob:',
+              'font-src \'self\' data:',
+              'connect-src \'self\' https:',
+              'frame-ancestors \'none\'',
+              'base-uri \'self\'',
+              'form-action \'self\'',
+              'upgrade-insecure-requests',
+            ].join('; '),
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 // Initialize the Next-Intl plugin
