@@ -1,15 +1,10 @@
 /**
  * API utility for handling HTTP requests with common response and error handling
  */
+import type { ApiResponse } from '@/types/api';
+import { Logger } from './logger';
 
-// Base response type for all API responses
-export type ApiResponse<T = any> = {
-  success: boolean;
-  data?: T;
-  message?: string;
-  errors?: Record<string, string[]>;
-  raw: Response;
-};
+const logger = Logger.create('HttpClient');
 
 // Error types for different scenarios
 export class ApiError extends Error {
@@ -47,7 +42,7 @@ export type RequestConfig = {
 
 // Default configuration
 const DEFAULT_CONFIG: RequestConfig = {
-  timeout: 10000, // 10 seconds
+  timeout: 30000, // 30 seconds
   headers: {
     'Content-Type': 'application/json',
   },
@@ -69,14 +64,6 @@ function createTimeoutPromise(timeout: number): Promise<never> {
  * Safely parses response based on content length and response type
  */
 async function parseResponse<T>(response: Response, responseType?: ResponseType): Promise<T | null> {
-  // Check content length to avoid parsing empty responses
-  const contentLength = response.headers.get('content-length');
-  const hasContent = contentLength && Number(contentLength) > 0;
-
-  if (!hasContent) {
-    return null;
-  }
-
   switch (responseType) {
     case RESPONSE_TYPES.JSON:
       return await response.json() as T;
@@ -138,6 +125,8 @@ export class HttpClient {
       url += `?${paramString}`;
     }
 
+    logger.info(`Request: ${fetchConfig.method || 'GET'} ${url}`);
+
     // Merge headers
     const mergedHeaders = {
       ...DEFAULT_CONFIG.headers,
@@ -164,26 +153,27 @@ export class HttpClient {
       }
 
       // Parse response using the safe parser
-      let data: any;
+      let responseData: any;
       try {
-        data = await parseResponse(response, responseType);
+        responseData = await parseResponse(response, responseType);
       } catch (parseError) {
         // If parsing fails, handle gracefully
-        console.warn('Response parsing failed:', parseError);
-        data = null;
+        logger.error('Response parsing error', parseError);
+        responseData = null;
       }
 
       // Handle HTTP errors
       if (!response.ok) {
-        const errorMessage = data?.message || data?.error || `HTTP ${response.status}`;
-        throw new ApiError(errorMessage, response.status, response, data);
+        const errorMessage = responseData?.message || responseData?.error || `HTTP ${response.status}`;
+        throw new ApiError(errorMessage, response.status, response, responseData);
       }
 
       // Return successful response
       return {
-        success: true,
-        data,
-        message: data?.message,
+        success: responseData?.success,
+        message: responseData?.message,
+        data: responseData?.data,
+        meta: responseData?.meta,
         raw: response,
       };
     } catch (error) {
