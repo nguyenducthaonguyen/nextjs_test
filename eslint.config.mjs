@@ -2,7 +2,9 @@ import antfu from '@antfu/eslint-config';
 import nextPlugin from '@next/eslint-plugin-next';
 import jestDom from 'eslint-plugin-jest-dom';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import noUnsanitized from 'eslint-plugin-no-unsanitized';
 import playwright from 'eslint-plugin-playwright';
+import security from 'eslint-plugin-security';
 import testingLibrary from 'eslint-plugin-testing-library';
 
 export default antfu(
@@ -59,6 +61,27 @@ export default antfu(
       '**/*.e2e.ts',
     ],
     ...playwright.configs['flat/recommended'],
+  },
+  // --- Security Rules ---
+  {
+    plugins: {
+      security,
+      'no-unsanitized': noUnsanitized,
+    },
+    rules: {
+      // Prevent unsafe DOM manipulation
+      'no-unsanitized/method': 'error',
+      'no-unsanitized/property': 'error',
+
+      // Security best practices
+      'security/detect-object-injection': 'warn',
+      'security/detect-non-literal-regexp': 'warn',
+      'security/detect-unsafe-regex': 'error',
+      'security/detect-buffer-noassert': 'error',
+      'security/detect-eval-with-expression': 'error',
+      'security/detect-no-csrf-before-method-override': 'error',
+      'security/detect-possible-timing-attacks': 'warn',
+    },
   },
   // --- Custom Rule Overrides ---
   {
