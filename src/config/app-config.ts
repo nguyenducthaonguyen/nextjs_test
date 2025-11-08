@@ -8,5 +8,3 @@ export const AppConfig = {
   defaultLocale: 'en',
   localePrefix,
 };
-
-export const localeMatcher = `(?:/(?<locale>${AppConfig.locales.join('|')}))?`;

@@ -14,7 +14,7 @@ export default defineConfig({
       include: ['src/**/*'],
       exclude: ['**/*.d.ts'],
     },
-    workspace: [
+    projects: [
       {
         extends: true, // Inherit root config (plugins, globals, coverage, setupFiles, env)
         test: {

@@ -2,25 +2,23 @@ import type { NextRequest } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 
-import { localeMatcher } from '@/config/app-config';
 import { AUTH_STORAGE_KEY } from '@/config/storage';
 import { routing } from '@/lib/i18n-routing';
-import { createRouteMatcher } from '@/lib/utils';
+import { createRouteMatcher } from '@/lib/route-matcher';
 import { Logger } from './lib/logger';
 
 const middlewareLogger = Logger.create('middleware');
 const handleI18nRouting = createMiddleware(routing);
 
-const protectedRoutes = createRouteMatcher([
-  `${localeMatcher}/dashboard(.*)`,
+const isProtectedMatcher = createRouteMatcher([
+  `/{:locale/}dashboard{/*path}`,
 ]);
 
 export default async function middleware(request: NextRequest) {
-  const response = handleI18nRouting(request);
   const { pathname } = request.nextUrl;
 
   // Check if current path is protected
-  const isProtectedRoute = protectedRoutes.some(route => route.test(pathname));
+  const isProtectedRoute = isProtectedMatcher(request);
 
   // Get authentication token from cookies
   const token = request.cookies.get(AUTH_STORAGE_KEY.ACCESS_TOKEN)?.value;
@@ -33,7 +31,7 @@ export default async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl);
   }
 
-  return response;
+  return handleI18nRouting(request);
 }
 
 export const config = {
