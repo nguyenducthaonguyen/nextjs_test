@@ -1,5 +1,5 @@
-import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import Home from '@/components/IndexPageClient';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
@@ -16,11 +16,10 @@ export async function generateMetadata(props: {
 }
 
 export default function Index() {
-  const t = useTranslations('common');
 
   return (
     <div className="py-5 [&_p]:my-6">
-      <h1 className="text-3xl font-bold">{t('app_name')}</h1>
+      <Home />
     </div>
   );
 }

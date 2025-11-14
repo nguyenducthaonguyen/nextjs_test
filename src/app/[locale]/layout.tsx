@@ -4,8 +4,10 @@ import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import { ThemeProvider } from '@/components/theme/theme-provider';
+import { CartProvider } from '@/contexts/cart-context';
 import { routing } from '@/lib/i18n-routing';
 import '@/styles/globals.css';
+import {ToastContainer} from "react-toastify";
 
 export const metadata: Metadata = {
   icons: [
@@ -51,6 +53,7 @@ export default async function RootLayout(props: {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body>
+        <ToastContainer autoClose={1000} />
         <NextIntlClientProvider>
           <ThemeProvider
             attribute="class"
@@ -58,7 +61,7 @@ export default async function RootLayout(props: {
             enableSystem
             disableTransitionOnChange
           >
-            {props.children}
+            <CartProvider>{props.children}</CartProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
