@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     return await fetchWithAuth({
-      url: '/api/v1/orders',
+      url: '/api/v1/orders/',
       method: 'POST',
       body,
     });
