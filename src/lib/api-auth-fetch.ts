@@ -10,7 +10,7 @@ type FetchWithAuthOptions = {
 
 export async function fetchWithAuth(options: FetchWithAuthOptions) {
   const { url, method = 'GET', body, headers = {} } = options;
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://ckinxt1wmj.execute-api.ap-southeast-1.amazonaws.com/dev';
   const cookieStore = await cookies();
 
   let accessToken = cookieStore.get('access_token')?.value;
@@ -84,7 +84,7 @@ export async function fetchWithAuth(options: FetchWithAuthOptions) {
 
 async function refreshAccessToken(refreshToken: string): Promise<{ success: boolean; accessToken?: string }> {
   try {
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://ckinxt1wmj.execute-api.ap-southeast-1.amazonaws.com/dev';
     console.log('[v0] Calling refresh endpoint...');
     const refreshResponse = await fetch(`${backendUrl}/api/v1/auth/refresh`, {
       method: 'POST',

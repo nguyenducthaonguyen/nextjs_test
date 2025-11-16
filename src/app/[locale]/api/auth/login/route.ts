@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     formData.append('username', username);
     formData.append('password', password);
 
-    const res = await fetch('http://localhost:8000/api/v1/auth/login', {
+    const res = await fetch('https://ckinxt1wmj.execute-api.ap-southeast-1.amazonaws.com/dev//api/v1/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: formData.toString(),
