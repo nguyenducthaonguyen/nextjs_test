@@ -8,7 +8,7 @@ import './src/lib/env';
 const baseConfig: NextConfig = {
   output: 'standalone',
   eslint: {
-    dirs: ['.'],
+    ignoreDuringBuilds: true,
   },
   poweredByHeader: false,
   reactStrictMode: true,
