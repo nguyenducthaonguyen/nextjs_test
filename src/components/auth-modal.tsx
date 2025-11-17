@@ -22,10 +22,6 @@ const registerSchema = z.object({
   path: ['confirmPassword'],
 });
 
-type LoginFormData = {
-  username: string;
-  password: string;
-};
 
 type RegisterFormData = {
   username: string;
