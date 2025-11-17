@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import { BASE_URL } from '@/config/storage';
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,7 +10,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
     }
 
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://ckinxt1wmj.execute-api.ap-southeast-1.amazonaws.com/dev';
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || BASE_URL;
     const response = await fetch(`${backendUrl}/api/v1/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -19,14 +20,15 @@ export async function POST(request: NextRequest) {
     const data = await response.json();
 
     if (!response.ok) {
-      return NextResponse.json({ error: data.message || 'Registration failed' }, { status: response.status });
+      console.error(data.message);
+      return NextResponse.json({ error_message: data.message || 'Registration failed' }, { status: response.status });
     }
 
     const formData = new URLSearchParams();
     formData.append('username', username);
     formData.append('password', password);
 
-    const res = await fetch('https://ckinxt1wmj.execute-api.ap-southeast-1.amazonaws.com/dev//api/v1/auth/login', {
+    const res = await fetch(`${backendUrl}/api/v1/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: formData.toString(),

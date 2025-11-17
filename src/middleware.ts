@@ -5,6 +5,7 @@ import { NextResponse } from 'next/server';
 import { routing } from '@/lib/i18n-routing';
 import { createRouteMatcher } from '@/lib/route-matcher';
 import { Logger } from './lib/logger';
+import {BASE_URL} from "@/config/storage";
 
 const middlewareLogger = Logger.create('middleware');
 const handleI18nRouting = createMiddleware(routing);
@@ -28,7 +29,7 @@ export default async function middleware(request: NextRequest) {
   // If the route is protected and no token is found, redirect to login
   if (isProtectedRoute && refreshToken && !accessToken) {
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://ckinxt1wmj.execute-api.ap-southeast-1.amazonaws.com/dev/';
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || BASE_URL;
       const refreshRes = await fetch(`${backendUrl}/api/v1/auth/refresh`, {
         method: 'POST',
         headers: {

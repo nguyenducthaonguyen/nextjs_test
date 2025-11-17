@@ -1,6 +1,7 @@
 // app/api/auth/login/route.ts
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import { BASE_URL } from '@/config/storage';
 
 export async function POST(req: NextRequest) {
   const { username, password } = await req.json();
@@ -10,7 +11,7 @@ export async function POST(req: NextRequest) {
     formData.append('username', username);
     formData.append('password', password);
 
-    const res = await fetch('https://ckinxt1wmj.execute-api.ap-southeast-1.amazonaws.com/dev/api/v1/auth/login', {
+    const res = await fetch(`${BASE_URL}/api/v1/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: formData.toString(),
