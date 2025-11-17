@@ -16,7 +16,6 @@ export async function generateMetadata(props: {
 }
 
 export default function Index() {
-
   return (
     <div className="py-5 [&_p]:my-6">
       <Home />

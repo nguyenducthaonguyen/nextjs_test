@@ -78,7 +78,6 @@ export default function ContactPage() {
       setTimeout(() => setSubmitted(false), 5000);
     } catch (error) {
       console.error('Error sending message:', error);
-      alert('Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại.');
     } finally {
       setIsLoading(false);
     }

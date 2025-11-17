@@ -22,7 +22,6 @@ const registerSchema = z.object({
   path: ['confirmPassword'],
 });
 
-
 type RegisterFormData = {
   username: string;
   password: string;
@@ -111,7 +110,6 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
 
       if (!res.ok) {
         if (res.status === 400 && data.error_message) {
-
           if (data.error_message.toLowerCase().includes('username already exists')
             || data.error_message.toLowerCase().includes('username đã tồn tại')) {
             setFieldErrors({ username: 'Tên người dùng đã tồn tại' });
@@ -146,6 +144,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="block text-sm font-medium mb-2 text-foreground">Tên người dùng</label>
             <input
               type="text"
@@ -164,6 +163,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
           {!isLogin && (
             <>
               <div>
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label className="block text-sm font-medium mb-2 text-foreground">Họ và tên</label>
                 <input
                   type="text"
@@ -180,6 +180,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
               </div>
 
               <div>
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label className="block text-sm font-medium mb-2 text-foreground">Email</label>
                 <input
                   type="email"
@@ -196,6 +197,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
               </div>
 
               <div>
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label className="block text-sm font-medium mb-2 text-foreground">Phone</label>
                 <input
                   type="text"
@@ -212,6 +214,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
               </div>
 
               <div>
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label className="block text-sm font-medium mb-2 text-foreground">Address</label>
                 <input
                   type="text"
@@ -230,6 +233,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
           )}
 
           <div>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="block text-sm font-medium mb-2 text-foreground">Mật khẩu</label>
             <input
               type="password"
@@ -247,6 +251,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
 
           {!isLogin && (
             <div>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label className="block text-sm font-medium mb-2 text-foreground">Xác nhận mật khẩu</label>
               <input
                 type="password"

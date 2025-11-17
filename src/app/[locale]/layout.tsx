@@ -3,11 +3,11 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
+import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { CartProvider } from '@/contexts/cart-context';
 import { routing } from '@/lib/i18n-routing';
 import '@/styles/globals.css';
-import {ToastContainer} from "react-toastify";
 
 export const metadata: Metadata = {
   icons: [
