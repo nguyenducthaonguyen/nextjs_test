@@ -51,7 +51,7 @@ export default function ShopPage() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-foreground">Đang tải...</p>
+        <p className="text-foreground">Loading...</p>
       </div>
     );
   }
@@ -70,8 +70,8 @@ export default function ShopPage() {
       <main className="flex-1">
         <section className="py-16 bg-secondary border-b border-border">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-serif font-bold text-primary mb-4">Cửa Hàng</h1>
-            <p className="text-foreground text-lg">Khám phá bộ sưu tập đồ gỗ cao cấp của chúng tôi</p>
+            <h1 className="text-4xl font-serif font-bold text-primary mb-4">Shop</h1>
+            <p className="text-foreground text-lg">Explore our premium wooden furniture collection</p>
           </div>
         </section>
         <ProductGrid onAddToCart={addToCart} />

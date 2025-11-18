@@ -49,7 +49,7 @@ export default function AboutPage() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-foreground">Đang tải...</p>
+        <p className="text-foreground">Loading...</p>
       </div>
     );
   }
@@ -67,9 +67,9 @@ export default function AboutPage() {
       {cartOpen && <Cart items={cart} onRemove={removeFromCart} onClose={() => setCartOpen(false)} />}
       <section className="bg-secondary border-b border-border py-16 md:py-24">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">Về WoodCraft Premium</h1>
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">About WoodCraft Premium</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Hành trình của chúng tôi bắt đầu từ đam mê với gỗ và cô công thủ công truyền thống
+            Our journey began with a passion for wood and traditional craftsmanship
           </p>
         </div>
       </section>
@@ -78,14 +78,12 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <h2 className="text-3xl font-serif font-bold text-primary mb-6">Câu Chuyện Của Chúng Tôi</h2>
+              <h2 className="text-3xl font-serif font-bold text-primary mb-6">Our Story</h2>
               <p className="text-foreground leading-relaxed mb-4">
-                WoodCraft Premium được thành lập vào năm 2010 với mong muốn mang những sản phẩm đồ gỗ cao cấp đến tay
-                khách hàng Việt Nam. Chúng tôi tin rằng gỗ không chỉ là vật liệu, mà là tác phẩm nghệ thuật.
+                WoodCraft Premium was founded in 2010 with the desire to bring premium wooden furniture products to Vietnamese customers. We believe that wood is not just a material, but a work of art.
               </p>
               <p className="text-foreground leading-relaxed">
-                Mỗi sản phẩm được chế tác bởi các thợ mộc lành nghề với kinh nghiệm hơn 20 năm, sử dụng những loại gỗ
-                tốt nhất từ các vùng miền khác nhau.
+                Each product is crafted by skilled carpenters with more than 20 years of experience, using the finest wood from different regions.
               </p>
             </div>
             <div className="bg-secondary rounded-lg h-80 flex items-center justify-center border border-border">
@@ -100,41 +98,41 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 border-y border-border">
             <div className="text-center">
               <div className="text-4xl font-bold text-accent mb-2">15+</div>
-              <p className="text-foreground font-medium">Năm Kinh Nghiệm</p>
-              <p className="text-muted-foreground text-sm mt-2">Chúng tôi luôn nỗ lực mang đến sản phẩm tốt nhất</p>
+              <p className="text-foreground font-medium">Years of Experience</p>
+              <p className="text-muted-foreground text-sm mt-2">We always strive to bring the best products</p>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-accent mb-2">5000+</div>
-              <p className="text-foreground font-medium">Khách Hàng Hài Lòng</p>
-              <p className="text-muted-foreground text-sm mt-2">Tin tưởng chúng tôi trên khắp cả nước</p>
+              <p className="text-foreground font-medium">Satisfied Customers</p>
+              <p className="text-muted-foreground text-sm mt-2">Trust us across the country</p>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-accent mb-2">100%</div>
-              <p className="text-foreground font-medium">Chất Lượng</p>
-              <p className="text-muted-foreground text-sm mt-2">Cam kết với từng sản phẩm</p>
+              <p className="text-foreground font-medium">Quality</p>
+              <p className="text-muted-foreground text-sm mt-2">Committed to every product</p>
             </div>
           </div>
 
           <div className="mt-16">
-            <h2 className="text-3xl font-serif font-bold text-primary mb-8 text-center">Tại Sao Chọn WoodCraft?</h2>
+            <h2 className="text-3xl font-serif font-bold text-primary mb-8 text-center">Why Choose WoodCraft?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-6 bg-secondary rounded-lg border border-border">
-                <h3 className="text-xl font-semibold text-primary mb-3">Gỗ Nguyên Liệu Cao Cấp</h3>
+                <h3 className="text-xl font-semibold text-primary mb-3">Premium Wood Materials</h3>
                 <p className="text-muted-foreground">
-                  Chúng tôi chỉ sử dụng những loại gỗ tốt nhất từ các nhà cung cấp đáng tin cây
+                  We only use the best wood from trusted suppliers
                 </p>
               </div>
               <div className="p-6 bg-secondary rounded-lg border border-border">
-                <h3 className="text-xl font-semibold text-primary mb-3">Thợ Mộc Lành Nghề</h3>
-                <p className="text-muted-foreground">Đội ngũ thợ mộc có kinh nghiệm hơn 20 năm trong lĩnh vực này</p>
+                <h3 className="text-xl font-semibold text-primary mb-3">Skilled Craftsmen</h3>
+                <p className="text-muted-foreground">Team of carpenters with more than 20 years of experience</p>
               </div>
               <div className="p-6 bg-secondary rounded-lg border border-border">
-                <h3 className="text-xl font-semibold text-primary mb-3">Thiết Kế Hiện Đại</h3>
-                <p className="text-muted-foreground">Kết hợp truyền thống với những xu hướng thiết kế hiện đại</p>
+                <h3 className="text-xl font-semibold text-primary mb-3">Modern Design</h3>
+                <p className="text-muted-foreground">Combining tradition with modern design trends</p>
               </div>
               <div className="p-6 bg-secondary rounded-lg border border-border">
-                <h3 className="text-xl font-semibold text-primary mb-3">Bảo Hành Dài Hạn</h3>
-                <p className="text-muted-foreground">Tất cả sản phẩm được bảo hành 5 năm</p>
+                <h3 className="text-xl font-semibold text-primary mb-3">Long-term Warranty</h3>
+                <p className="text-muted-foreground">All products come with a 5-year warranty</p>
               </div>
             </div>
           </div>

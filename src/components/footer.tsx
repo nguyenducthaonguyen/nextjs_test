@@ -9,42 +9,42 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-serif font-bold text-primary mb-4">WoodCraft Premium</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Chúng tôi chuyên cung cấp các sản phẩm đồ gỗ cao cấp được chế tác thủ công với chất lượng tốt nhất.
+              We specialize in providing premium handcrafted wooden furniture with the highest quality.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Liên Kết Nhanh</h4>
+            <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,next/no-html-link-for-pages */}
+                {/* eslint-disable-next-line next/no-html-link-for-pages */}
                 <a href="/" className="text-muted-foreground hover:text-accent transition">
-                  Sản Phẩm
+                  Products
                 </a>
               </li>
               <li>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid,next/no-html-link-for-pages */}
+                {/* eslint-disable-next-line next/no-html-link-for-pages */}
                 <a href="/about" className="text-muted-foreground hover:text-accent transition">
-                  Về chúng tôi
+                  About Us
                 </a>
               </li>
               <li>
                 {/* eslint-disable-next-line next/no-html-link-for-pages */}
                 <a href="/contact" className="text-muted-foreground hover:text-accent transition">
-                  Liên Hệ
+                  Contact
                 </a>
               </li>
               <li>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#" className="text-muted-foreground hover:text-accent transition">
-                  Chính Sách Bảo Mật
+                  Privacy Policy
                 </a>
               </li>
               <li>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#" className="text-muted-foreground hover:text-accent transition">
-                  Điều Khoản Dịch Vụ
+                  Terms of Service
                 </a>
               </li>
             </ul>
@@ -52,22 +52,22 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Liên Hệ</h4>
+            <h4 className="font-semibold text-foreground mb-4">Contact</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <MapPin size={18} className="text-accent flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">123 Đường Gỗ, TP. Hồ Chí Minh, Việt Nam</span>
+                <span className="text-muted-foreground">123 Wood Street, Ho Chi Minh City, Vietnam</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={18} className="text-accent" />
-                <a href="tel:+84123456789" className="text-muted-foreground hover:text-accent transition">
-                  +84 (123) 456-789
+                <a href="tel:+84982775131" className="text-muted-foreground hover:text-accent transition">
+                  0982775131
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={18} className="text-accent" />
-                <a href="mailto:info@woodcraft.vn" className="text-muted-foreground hover:text-accent transition">
-                  info@woodcraft.vn
+                <a href="mailto:nguyenndt@mynavitechtus.com" className="text-muted-foreground hover:text-accent transition">
+                  nguyenndt@mynavitechtus.com
                 </a>
               </li>
             </ul>
@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-border pt-6 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-xs text-muted-foreground">&copy; 2025 WoodCraft Premium. Tất cả quyền được bảo lưu.</p>
+          <p className="text-xs text-muted-foreground">&copy; 2025 WoodCraft Premium. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href="#" className="text-muted-foreground hover:text-accent transition text-xs">

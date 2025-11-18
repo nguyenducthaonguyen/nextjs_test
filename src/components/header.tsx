@@ -55,10 +55,9 @@ export default function Header({ cartCount, onCartClick, user, onAuthClick, onLo
                   <div className="hidden sm:flex items-center gap-2 px-3 py-2 bg-secondary rounded">
                     <User size={18} className="text-accent" />
                     <span className="text-sm text-foreground">{user.username}</span>
-
                   </div>
 
-                  <button onClick={onLogout} className="p-2 hover:bg-secondary rounded transition" title="Đăng xuất">
+                  <button onClick={onLogout} className="p-2 hover:bg-secondary rounded transition" title="Logout">
                     <LogOut size={20} className="text-foreground" />
                   </button>
                 </div>
@@ -68,7 +67,7 @@ export default function Header({ cartCount, onCartClick, user, onAuthClick, onLo
                   onClick={onAuthClick}
                   className="hidden sm:inline px-4 py-2 bg-accent text-accent-foreground rounded hover:bg-opacity-90 transition font-medium text-sm"
                 >
-                  Đăng Nhập
+                  Login
                 </button>
               )}
 
@@ -100,7 +99,7 @@ export default function Header({ cartCount, onCartClick, user, onAuthClick, onLo
               onClick={onAuthClick}
               className="w-full mt-4 px-4 py-2 bg-accent text-accent-foreground rounded hover:bg-opacity-90 transition font-medium"
             >
-              Đăng Nhập
+              Login
             </button>
           )}
         </nav>

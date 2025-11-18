@@ -5,20 +5,20 @@ import { useState } from 'react';
 import { z } from 'zod';
 
 const loginSchema = z.object({
-  username: z.string().min(6, 'Tên người dùng phải có ít nhất 6 ký tự'),
-  password: z.string().min(8, 'Mật khẩu phải có ít nhất 8 ký tự'),
+  username: z.string().min(6, 'Username must be at least 6 characters'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
 });
 
 const registerSchema = z.object({
-  username: z.string().min(6, 'Tên người dùng phải có ít nhất 6 ký tự'),
-  full_name: z.string().min(5, 'Họ và tên phải có ít nhất 5 ký tự'),
-  email: z.email('Email không hợp lệ'),
-  phone: z.string().min(10, 'Số điện thoại phải có ít nhất 10 số'),
-  address: z.string().min(4, 'Địa chỉ phải có ít nhất 4 ký tự'),
-  password: z.string().min(8, 'Mật khẩu phải có ít nhất 8 ký tự'),
-  confirmPassword: z.string().min(8, 'Xác nhận mật khẩu phải có ít nhất 8 ký tự'),
+  username: z.string().min(6, 'Username must be at least 6 characters'),
+  full_name: z.string().min(5, 'Full name must be at least 5 characters'),
+  email: z.email('Invalid email address'),
+  phone: z.string().min(10, 'Phone number must be at least 10 digits'),
+  address: z.string().min(4, 'Address must be at least 4 characters'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+  confirmPassword: z.string().min(8, 'Confirm password must be at least 8 characters'),
 }).refine(data => data.password === data.confirmPassword, {
-  message: 'Mật khẩu xác nhận không khớp',
+  message: 'Passwords do not match',
   path: ['confirmPassword'],
 });
 
@@ -112,15 +112,15 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
         if (res.status === 400 && data.error_message) {
           if (data.error_message.toLowerCase().includes('username already exists')
             || data.error_message.toLowerCase().includes('username đã tồn tại')) {
-            setFieldErrors({ username: 'Tên người dùng đã tồn tại' });
+            setFieldErrors({ username: 'Username already exists' });
           } else if (data.error_message.toLowerCase().includes('email already exists')
             || data.error_message.toLowerCase().includes('email đã tồn tại')) {
-            setFieldErrors({ email: 'Email đã được sử dụng' });
+            setFieldErrors({ email: 'Email is already in use' });
           } else {
-            setError(data.error_message || 'Có lỗi xảy ra');
+            setError(data.error_message || 'An error occurred');
           }
         } else {
-          setError(data.error_message || 'Thông tin đăng nhập chưa chính xác!');
+          setError(data.error_message || 'Invalid login credentials');
         }
         return;
       }
@@ -138,14 +138,14 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-background p-8 rounded-lg w-full max-w-md border border-border max-h-[90vh] overflow-y-auto">
-        <h2 className="text-2xl font-bold mb-6 text-primary">{isLogin ? 'Đăng Nhập' : 'Đăng Ký'}</h2>
+        <h2 className="text-2xl font-bold mb-6 text-primary">{isLogin ? 'Login' : 'Sign Up'}</h2>
 
         {error && <div className="mb-4 p-3 bg-red-100 border border-red-300 rounded text-red-800 text-sm">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label className="block text-sm font-medium mb-2 text-foreground">Tên người dùng</label>
+            <label className="block text-sm font-medium mb-2 text-foreground">Username</label>
             <input
               type="text"
               value={formData.username}
@@ -164,7 +164,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
             <>
               <div>
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label className="block text-sm font-medium mb-2 text-foreground">Họ và tên</label>
+                <label className="block text-sm font-medium mb-2 text-foreground">Full Name</label>
                 <input
                   type="text"
                   value={formData.full_name}
@@ -234,7 +234,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
 
           <div>
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label className="block text-sm font-medium mb-2 text-foreground">Mật khẩu</label>
+            <label className="block text-sm font-medium mb-2 text-foreground">Password</label>
             <input
               type="password"
               value={formData.password}
@@ -252,7 +252,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
           {!isLogin && (
             <div>
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label className="block text-sm font-medium mb-2 text-foreground">Xác nhận mật khẩu</label>
+              <label className="block text-sm font-medium mb-2 text-foreground">Confirm Password</label>
               <input
                 type="password"
                 value={formData.confirmPassword}
@@ -273,7 +273,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
             className="w-full bg-accent text-accent-foreground py-2 rounded font-medium hover:bg-opacity-90 transition disabled:opacity-50"
             disabled={loading}
           >
-            {loading ? 'Đang xử lý...' : isLogin ? 'Đăng Nhập' : 'Đăng Ký'}
+            {loading ? 'Processing...' : isLogin ? 'Login' : 'Sign Up'}
           </button>
         </form>
 
@@ -295,7 +295,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
           className="w-full mt-4 text-accent text-sm hover:underline"
           disabled={loading}
         >
-          {isLogin ? 'Chưa có tài khoản? Đăng ký' : 'Đã có tài khoản? Đăng nhập'}
+          {isLogin ? 'Don\'t have an account? Sign up' : 'Already have an account? Login'}
         </button>
 
         <button
@@ -303,7 +303,7 @@ export default function AuthModal({ onSetUser, onClose }: AuthModalProps) {
           className="w-full mt-4 text-muted-foreground text-sm hover:text-foreground"
           disabled={loading}
         >
-          Đóng
+          Close
         </button>
       </div>
     </div>

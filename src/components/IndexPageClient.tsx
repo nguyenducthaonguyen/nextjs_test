@@ -53,7 +53,7 @@ export default function Home() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p className="text-foreground">Đang tải...</p>
+        <p className="text-foreground">Loading...</p>
       </div>
     );
   }
